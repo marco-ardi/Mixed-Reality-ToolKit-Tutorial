@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[nottoc]{tocbibind}
+\usepackage[colorinlistoftodos]{todonotes}
+\setlength{\marginparwidth}{2cm}
+\hypersetup{hidelinks}
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Università di Catania}\\[1.5cm] % Name of your university/college
+\includegraphics[scale=.3]{logoUnict.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+\textsc{\Large MRKT Tutorial}\\[0.5cm] % Major heading such as course name
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries How to set up your environment for Hololens}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Marco \textsc{Ardizzone}\\ % Your name
+
+\vspace{0.3cm}
+\emph{Matricola:}\\
+X81001077\\ % Your name
+\end{flushleft}
+
+\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large May 2021}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+
+
+\tableofcontents
+\clearpage
+\section{Introduction}
+\textbf{Disclaimer}: This tutorial is not meant to replace the \href{https://docs.microsoft.com/en-us/windows/mixed-reality/develop/unity/tutorials/mr-learning-base-01}{\underline{\emph{original MRTK tutorial}}}, it is just a tutorial made for other students which wants to quickly set up the environment for Microsoft Hololens. 
+ 
+%i nomi dei pacchetti in inglese potrebbero essere leggermente diversi
+%sarebbe meglio aggiungere delle immagini passo-passo
+\section{Prerequisites}
+Before starting, it is mandatory to download and set up the following resources:
+\begin{itemize}
+  \item \textbf{Windows 10}
+  \item \textbf{Visual Studio 2019 (16.8 or higher)}: Downloadable \href{https://visualstudio.microsoft.com/downloads/}{\underline{\emph{here}}}.
+  \\
+  It is \emph{mandatory} to install these extensions:
+  \subitem \textbf{ASP:NET and Web Development}
+  \subitem \textbf{.NET desktop development}
+  \subitem \textbf{C++ desktop development}
+  \subitem \textbf{UWP development}
+  \subitem \textbf{Unity game development}
+  \subitem \textbf{C++ game development}
+  \subitem \textbf{USB devices connectivity}
+  \subitem \textbf{Windows 10 SDK}
+  
+  \item \textbf{Windows 10 SDK}: Downloadable \href{https://developer.microsoft.com//windows/downloads/windows-10-sdk}{\underline{\emph{here}}} 
+  \item \textbf{Unity 2019.4 LTS}: Downloadable \href{https://unity3d.com/get-unity/download}{\underline{\emph{here}}}.
+  \\
+  It is \emph{mandatory} to install modules:
+  \subitem \textbf{Universal Windows Platform Build Support}
+  \subitem \textbf{Windows Build Support (IL2CPP)}
+  
+  \item \textbf{.NET 5.0 runtime (or higher)}: Downloadable \href{https://dotnet.microsoft.com/download/dotnet/5.0}{\underline{\emph{here}}}.
+  
+  \item \textbf{Mixed Reality ToolKit}: Downloadable \href{https://aka.ms/MRFeatureTool}{\underline{\emph{here}}}.
+\end{itemize}
+
+\section{Initializing and deploying your first application}
+\subsection{Unity Project}
+First of all, a new Unity 3D Project must be created.
+Once the blank project is created, select\emph{File} $>$ \emph{Build Settings...}. \\
+Then select \emph{Universal Windows Platform} and click \emph{Switch Platform}.
+Once the switch is done, close the Build Settings Window. Open the \emph{Window} menu $>$ \emph{TextMeshPro} $>$ \emph{Import TMP Essential Resources}, then click \emph{all} and \emph{import}
+
+\subsection{Importing the Mixed Reality ToolKit}
+In order to import the Mixed Reality ToolKit in your Unity's Project, you must open the \emph{MixedRealityFeatureTool.exe} from the Mixed Reality Feature Tool directory.
+Then, \emph{Start} $>$ select \emph{Mixed Reality ToolKit Fundation (2.5.4 or higher)} and click on \emph{Get Features}.
+Click on \emph{...} and select your project's path, then click \emph{Validate}
+You will get a popup, close it and click on \emph{Import} and then click on \emph{Approve}
+
+\subsection{Configuring the Unity Project}
+Once unity has finished importing the packages, click on \emph{Mixed Reality ToolKit} menu $>$ \emph{utilities} $>$ \emph{Configure Unity Project}.
+In the Configuration Windows, expand \emph{Modify Configurations section}, ensure all options are checked and click on \emph{Apply}.
+Now, select \emph{Edit} menu $>$ \emph{Project Settings...} and then \emph{XR Plug-in Management} $>$ \emph{Install XR Plug-in Management}. Once the installation is done, ensure that \emph{Initialize XR on Startup} and \emph{Windows Mixed Reality} is checked.
+%a me sta cosa non andava, sarà un problema?
+Then in MRTK Project Configurator window, use the \emph{Audio spatializer} dropdown to select the \emph{MS HRTF Spatializer}, then click the \emph{Apply} button.
+Then in the Project Settings Window, select \emph{XR Plug-in Management} $>$ \emph{Windows Mixed Reality} $>$ \emph{Runtime Settings} and select $16 bit-depth$ as \emph{Depth Buffer Format}.
+In project settings window, select \emph{Player} $>$ \emph{Publishing Settings} and in the \emph{Package name} enter a suitable name.
+
+
+
+
+\section{Conclusion}
+Once everything is done, you can write and build your application on hololens!
+
+
+\end{document}
